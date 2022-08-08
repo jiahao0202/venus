@@ -8,7 +8,7 @@
 #include <iostream>
 #include <numeric>
 
-namespace black{
+namespace funcs{
     inline double calc_d1(double spot,
                      double strike,
                      double r,

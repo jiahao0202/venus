@@ -21,8 +21,8 @@ namespace vanilla_pricer{
                  double r_delivery,
                  double tau_delivery,
                  OptionType option_type){
-        double d1 = calc_d1(spot, strike, r, q, vol, tau);
-        double d2 = calc_d2(spot, strike, r, q, vol, tau);
+        double d1 = funcs::calc_d1(spot, strike, r, q, vol, tau);
+        double d2 = funcs::calc_d2(spot, strike, r, q, vol, tau);
         double df = exp(r * tau) * exp(-r_delivery * tau_delivery);
         if(option_type == OptionType::Call)
             return df * (spot * exp(-q * tau) * gsl_cdf_ugaussian_Q(d1) -
