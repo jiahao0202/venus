@@ -18,9 +18,69 @@ namespace vanilla_pricer{
                  double r,
                  double q,
                  double tau,
+                 OptionType option_type,
                  double r_delivery,
-                 double tau_delivery,
-                 OptionType option_type);
+                 double tau_delivery);
+
+    double delta(double spot,
+                 double strike,
+                 double vol,
+                 double r,
+                 double q,
+                 double tau,
+                 OptionType option_type,
+                 double r_delivery,
+                 double tau_delivery);
+
+    double gamma(double spot,
+                 double strike,
+                 double vol,
+                 double r,
+                 double q,
+                 double tau,
+                 OptionType option_type,
+                 double r_delivery,
+                 double tau_delivery);
+
+    double theta(double spot,
+                 double strike,
+                 double vol,
+                 double r,
+                 double q,
+                 double tau,
+                 OptionType option_type,
+                 double r_delivery,
+                 double tau_delivery);
+
+    double vega(double spot,
+                 double strike,
+                 double vol,
+                 double r,
+                 double q,
+                 double tau,
+                 OptionType option_type,
+                 double r_delivery,
+                 double tau_delivery);
+
+    double rho(double spot,
+                 double strike,
+                 double vol,
+                 double r,
+                 double q,
+                 double tau,
+                 OptionType option_type,
+                 double r_delivery,
+                 double tau_delivery);
+
+    double phi(double spot,
+                 double strike,
+                 double vol,
+                 double r,
+                 double q,
+                 double tau,
+                 OptionType option_type,
+                 double r_delivery,
+                 double tau_delivery);
 }
 
 #endif //PYBIND_CPP_VANILLA_OPTION_H

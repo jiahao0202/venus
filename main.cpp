@@ -9,4 +9,10 @@ PYBIND11_MODULE(venus, m){
             .value("put", OptionType::Put);
     py::module m2 = m.def_submodule("vanilla_pricer", "vanilla pricer from venues");
     m2.def("price", &vanilla_pricer::price);
+    m2.def("delta", &vanilla_pricer::delta);
+    m2.def("gamma", &vanilla_pricer::gamma);
+    m2.def("vega", &vanilla_pricer::vega);
+    m2.def("theta", &vanilla_pricer::theta);
+    m2.def("rho", &vanilla_pricer::rho);
+    m2.def("phi", &vanilla_pricer::phi);
 }
