@@ -1,9 +1,18 @@
 cmake_minimum_required(VERSION 3.4...3.21)
-project(venues LANGUAGES CXX)
+project(venus LANGUAGES CXX)
 
-SET(CMAKE_BUILD_TYPE "Release")
+SET(CMAKE_CXX_STANDARD 11)
+SET(CMAKE_CXX_STANDARD_REQUIRED ON)
+SET(CMAKE_CXX_EXTENSIONS OFF)
+SET(CMAKE_BUILD_TYPE "Debug")
 
-find_package(pybind11 REQUIRED)
-find_package(GSL REQUIRED)
+enable_testing()
 
-pybind11_add_module(venues main.cpp)
+add_subdirectory("unittests")
+add_subdirectory("analytic")
+
+# find_package(pybind11 REQUIRED)
+
+# file(GLOB DIR_SRCS analytic/*.cpp)
+
+# pybind11_add_module(venus main.cpp ${DIR_SRCS})

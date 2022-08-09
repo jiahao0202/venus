@@ -2,12 +2,12 @@
 // Created by Jiahao FENG on 8/8/2022.
 //
 
+#pragma once
+
 #ifndef PYBIND_CPP_VANILLA_OPTION_H
 #define PYBIND_CPP_VANILLA_OPTION_H
 
 #include <iostream>
-#include <gsl/gsl_cdf.h>
-
 #include "funcs.h"
 #include "../utils/enums.h"
 
@@ -20,17 +20,7 @@ namespace vanilla_pricer{
                  double tau,
                  double r_delivery,
                  double tau_delivery,
-                 OptionType option_type){
-        double d1 = funcs::calc_d1(spot, strike, r, q, vol, tau);
-        double d2 = funcs::calc_d2(spot, strike, r, q, vol, tau);
-        double df = exp(r * tau) * exp(-r_delivery * tau_delivery);
-        if(option_type == OptionType::Call)
-            return df * (spot * exp(-q * tau) * gsl_cdf_ugaussian_Q(d1) -
-                         strike * exp(-r * tau) * gsl_cdf_ugaussian_Q(d2));
-        else
-            return df * (-spot * exp(-q * tau) * gsl_cdf_ugaussian_Q(-d1) +
-                         strike * exp(-r * tau) * gsl_cdf_ugaussian_Q(-d2));
-    }
+                 OptionType option_type);
 }
 
 #endif //PYBIND_CPP_VANILLA_OPTION_H

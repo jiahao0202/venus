@@ -5,10 +5,14 @@
 #ifndef PYBIND_CPP_FUNCS_H
 #define PYBIND_CPP_FUNCS_H
 
-#include <iostream>
-#include <numeric>
+#include <cmath>
 
 namespace funcs{
+
+    double normal_cdf(double x);
+
+    double normal_pdf(double x);
+
     inline double calc_d1(double spot,
                      double strike,
                      double r,
