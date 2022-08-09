@@ -18,7 +18,7 @@ namespace vanilla_pricer{
     ){
         double d1 = funcs::calc_d1(spot, strike, r, q, vol, tau);
         double d2 = funcs::calc_d2(spot, strike, r, q, vol, tau);
-        double df = exp(r * tau) * exp(-r_delivery * tau_delivery);
+        double df = exp(r * tau -r_delivery * tau_delivery);
         if(option_type == OptionType::Call)
             return df * (spot * exp(-q * tau) * funcs::normal_cdf(d1) -
                          strike * exp(-r * tau) * funcs::normal_cdf(d2));
@@ -38,7 +38,7 @@ namespace vanilla_pricer{
                  double tau_delivery
     ){
         double d1 = funcs::calc_d1(spot, strike, r, q, vol, tau);
-        double df = exp(r * tau) * exp(-r_delivery * tau_delivery);
+        double df = exp(r * tau - r_delivery * tau_delivery);
         if(option_type == OptionType::Call)
             return df * exp(-q * tau) * funcs::normal_cdf(d1);
         else
@@ -56,7 +56,7 @@ namespace vanilla_pricer{
                  double tau_delivery
     ){
         double d1 = funcs::calc_d1(spot, strike, r, q, vol, tau);
-        double df = exp(r * tau) * exp(-r_delivery * tau_delivery);
+        double df = exp(r * tau - r_delivery * tau_delivery);
         return df * exp(-q * tau) * funcs::normal_pdf(d1) / (vol * spot * sqrt(tau));
     }
 
@@ -71,7 +71,7 @@ namespace vanilla_pricer{
                  double tau_delivery
     ){
         double d1 = funcs::calc_d1(spot, strike, r, q, vol, tau);
-        double df = exp(r * tau) * exp(-r_delivery * tau_delivery);
+        double df = exp(r * tau - r_delivery * tau_delivery);
         return df * spot * sqrt(tau) * exp(-q * tau) * funcs::normal_pdf(d1);
     }
 
@@ -86,7 +86,7 @@ namespace vanilla_pricer{
                 double tau_delivery
     ){
         double d1 = funcs::calc_d1(spot, strike, r, q, vol, tau);
-        double df = exp(r * tau) * exp(-r_delivery * tau_delivery);
+        double df = exp(r * tau - r_delivery * tau_delivery);
         if(option_type == OptionType::Call)
             return -df * tau * spot * exp(-q * tau) * funcs::normal_cdf(d1);
         else
@@ -104,7 +104,7 @@ namespace vanilla_pricer{
                double tau_delivery
     ){
         double d2 = funcs::calc_d2(spot, strike, r, q, vol, tau);
-        double df = exp(r * tau) * exp(-r_delivery * tau_delivery);
+        double df = exp(r * tau - r_delivery * tau_delivery);
         double pv = price(spot, strike, vol, r, q, tau, option_type, r_delivery, tau_delivery);
         if(option_type == OptionType::Call)
             return df * tau * strike * exp(-r * tau) * funcs::normal_cdf(d2) + df * (tau - tau_delivery) * pv;
@@ -124,7 +124,7 @@ namespace vanilla_pricer{
     ){
         double d1 = funcs::calc_d1(spot, strike, r, q, vol, tau);
         double d2 = funcs::calc_d2(spot, strike, r, q, vol, tau);
-        double df = exp(r * tau) * exp(-r_delivery * tau_delivery);
+        double df = exp(r * tau - r_delivery * tau_delivery);
         double pv = price(spot, strike, vol, r, q, tau, option_type, r_delivery, tau_delivery);
         double theta_ = 0.;
         if(option_type == OptionType::Call)
