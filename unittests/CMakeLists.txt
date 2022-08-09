@@ -1,6 +1,7 @@
 cmake_minimum_required(VERSION 3.4...3.21)
 project(venus LANGUAGES CXX)
 enable_testing()
+SET(CMAKE_DGTEST_BUILD_TESTS ON)
 file(GLOB TEST_SRCS ./*.cpp)
 add_executable(venustest ${TEST_SRCS})
 find_package(glog CONFIG REQUIRED)

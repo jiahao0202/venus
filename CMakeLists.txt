@@ -11,8 +11,6 @@ enable_testing()
 add_subdirectory("unittests")
 add_subdirectory("analytic")
 
-# find_package(pybind11 REQUIRED)
-
-# file(GLOB DIR_SRCS analytic/*.cpp)
-
-# pybind11_add_module(venus main.cpp ${DIR_SRCS})
+find_package(pybind11 REQUIRED)
+file(GLOB DIR_SRCS analytic/*.cpp)
+pybind11_add_module(venus main.cpp ${DIR_SRCS})
