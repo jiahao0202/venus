@@ -107,9 +107,9 @@ namespace vanilla_pricer{
         double df = exp(r * tau - r_delivery * tau_delivery);
         double pv = price(spot, strike, vol, r, q, tau, option_type, r_delivery, tau_delivery);
         if(option_type == OptionType::Call)
-            return df * tau * strike * exp(-r * tau) * funcs::normal_cdf(d2) + df * (tau - tau_delivery) * pv;
+            return df * tau * strike * exp(-r * tau) * funcs::normal_cdf(d2) + (tau - tau_delivery) * pv;
         else
-            return -df * tau * strike * exp(-r * tau) * funcs::normal_cdf(-d2) + df * (tau - tau_delivery) * pv;
+            return -df * tau * strike * exp(-r * tau) * funcs::normal_cdf(-d2) + (tau - tau_delivery) * pv;
     }
 
     double theta(double spot,

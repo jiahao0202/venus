@@ -32,7 +32,7 @@ TEST(TestVanillaOption, TestCall){
     EXPECT_NEAR(vega, 38.795545, 1e-6);
 
     double rho = vanilla_pricer::rho(spot, strike, vol, r, q, tau, option_type, r_delivery, tau_delivery);
-    EXPECT_NEAR(rho, 45.880311, 1e-6);
+    EXPECT_NEAR(rho, 45.880127, 1e-6);
 
     double phi = vanilla_pricer::phi(spot, strike, vol, r, q, tau, option_type, r_delivery, tau_delivery);
     EXPECT_NEAR(phi, -59.183191, 1e-6);
@@ -65,7 +65,7 @@ TEST(TestVanillaOption, TestPut){
     EXPECT_NEAR(vega, 38.795545, 1e-6);
 
     double rho = vanilla_pricer::rho(spot, strike, vol, r, q, tau, option_type, r_delivery, tau_delivery);
-    EXPECT_NEAR(rho, -51.532731, 1e-6);
+    EXPECT_NEAR(rho, -51.532880, 1e-6);
 
     double phi = vanilla_pricer::phi(spot, strike, vol, r, q, tau, option_type, r_delivery, tau_delivery);
     EXPECT_NEAR(phi, 40.746433, 1e-6);
